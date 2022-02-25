@@ -163,7 +163,7 @@ class Plugin {
 		$time = time();
 
 		// A writable uploads dir will pass this test. Again, there's no point overriding this one.
-		if ( ! ( ( $uploads = wp_upload_dir( $time ) ) && false === $uploads['error'] ) ) {
+		if ( ! ( ( $uploads = wp_upload_dir( date('Ym', time()) ) ) && false === $uploads['error'] ) ) {
 			return new WP_Error( 'upload_error', $uploads['error'] );
 		}
 
@@ -199,7 +199,7 @@ class Plugin {
 
 			// A new time has been found! Get the new uploads folder:
 			// A writable uploads dir will pass this test. Again, there's no point overriding this one.
-			if ( !(($uploads = wp_upload_dir( $time )) && false === $uploads['error']) ) {
+			if ( !(($uploads = wp_upload_dir( date('Ym', $time) )) && false === $uploads['error']) ) {
 				return new WP_Error( 'upload_error', $uploads['error'] );
 			}
 			$url = $uploads['baseurl'] . $mat[1];
